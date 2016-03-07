@@ -39,8 +39,6 @@ describe "Reseting database to test" do
 end
 
 describe "Lawns" do
-
-
   describe "Calls to lawns" do
 		it "/lawnsl GET" do
 			Lawn.delete_all
@@ -222,4 +220,54 @@ describe "Lawns" do
 		  info["status"].must_equal "ok"
 		end
  	end
+
+ 	describe "lawn model" do
+ 		before {
+ 		 	Lawn.delete_all
+			Mower.delete_all
+		  @lawn = Lawn.create(:width=>5, :height=>5)
+		  @lawn.mowers.create(x:1, y:2, headings:"N", commands:"LMLMLMLMM")
+		  @lawn.mowers.create(x:3, y:3, headings:"E", commands:"MMRMMRMRRM")
+ 		}
+
+  	it "array_positions " do
+		  array = @lawn.array_positions
+		  array.must_equal ["5 5", "1 2 N", "LMLMLMLMM", "3 3 E", "MMRMMRMRRM"]
+
+  	end
+
+  	it "map prositions" do
+  		map = @lawn.map_positions
+  		map[:withd].must_equal 5
+  		map[:height].must_equal 5
+
+  		map[:mower][0].x.must_equal 1
+  		map[:mower][1].x.must_equal 1
+  	end
+
+	  it "set_mowers_values" do
+	  	lawn_mowers_positions = {}
+			@lawn.set_mowers_values([[1, 1], [1, 1, "S", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
+			Mower.first.x.must_equal 1
+			Mower.first.y.must_equal 1
+			Mower.first.headings.must_equal "S"
+			@lawn.set_mowers_values([[5, 5], [1, 3, "N", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
+			Lawn.first.width.must_equal 5
+			Lawn.first.height.must_equal 5
+			Mower.first.x.must_equal 1
+			Mower.first.y.must_equal 3
+			Mower.first.headings.must_equal "N"
+	  end
+    
+  
+  	it "execute" do
+	  	@lawn.execute
+	  	Mower.first.x.must_equal 1
+			Mower.first.y.must_equal 3
+			Mower.first.headings.must_equal "N"
+			Mower.last.x.must_equal 5
+			Mower.last.y.must_equal 1
+			Mower.last.headings.must_equal "E"
+	  end
+	end
 end
