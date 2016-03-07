@@ -6,7 +6,7 @@ require './environments'
 require './lawn'
 require './mower'
 
-get "/renew_data_base" do 
+get "/reset_database" do 
   Lawn.delete_all
   Mower.delete_all
   lawn = Lawn.create(:width=>5, :height=>5)

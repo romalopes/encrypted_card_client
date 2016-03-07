@@ -12,8 +12,8 @@ def app
 end
 
 describe "Reseting database to test" do 
-	it "/renew_data_base" do 
-		get "/renew_data_base"
+	it "/reset_database" do 
+		get "/reset_database"
   	Lawn.count.must_equal 1
   	Mower.count.must_equal 2
 
