@@ -104,7 +104,6 @@ describe "Lawns" do
 		  info["status"].must_equal "ok"
 		end
 
-
 		it "DELETE /lawn/:id/mower/:mower_id delete" do
 			Lawn.delete_all
 			Mower.delete_all
@@ -136,13 +135,9 @@ describe "Lawns" do
 		  Mower.last.y.must_equal 1
 		  Mower.last.headings.must_equal "E"
 		end
-
-
 	end
-  describe "Calls to mowers" do
-		
-##############
 
+  describe "Calls to mowers" do
 		it "/lawn/:id/mowers GET list all" do
 			Lawn.delete_all
 			Mower.delete_all
