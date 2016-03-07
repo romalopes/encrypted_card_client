@@ -1,5 +1,5 @@
 ### Lawn Mowing API
-API REST that manage lawns and mower and call manual mowing system returning Json values.<br>
+API REST that manage lawns and mower and call manual mowing system returning Json values.  This api call a gem created to run the mower system.<br>
 		GitHub<br>
 		  https://github.com/romalopes/lawn-mowing-api<br>
 		Travis<br>
