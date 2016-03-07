@@ -31,9 +31,7 @@ describe "Reseting database to test" do
 	  Mower.last.x.must_equal 3
 	  Mower.last.y.must_equal 3
 	  Mower.last.headings.must_equal "E"
-
 	end
-
 end
 
 describe "Lawns" do
