@@ -23,21 +23,18 @@
 		  	$ bundle exec ruby api_lawn.rb
 
 
-				http://localhost:4567/renew_data_base
+		  	Just to test<br>
+				http://localhost:4567/renew_data_base  (set the database with the values from example)
+
 				http://localhost:4567/execute/:id
 
 
 2 - GEM reponsible for run the manual and automatic systems.  To run both systems the user has to cal a file which is located in bin directory.
 
-		GitHub
-		  https://github.com/romalopes/lawn_mowing
-		Travis
-		  https://travis-ci.org/romalopes/lawn_mowing
-
-		    To build a GEM
-		        $ gem build lawn_mowing.gemspec
-		    To install a GEM
-		        $ gem install ./lawn_mowing-0.1.0.gem
+		GitHub<br>
+		  https://github.com/romalopes/lawn_mowing<br>
+		Travis<br>
+		  https://travis-ci.org/romalopes/lawn_mowing<br>
 
 		 
 		To run the GEM
