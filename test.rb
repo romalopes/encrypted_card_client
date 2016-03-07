@@ -1,8 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 require 'minitest/autorun'
 require 'rack/test'
-# require './spec/spec_helper.rb'
-
 require_relative 'api_lawn.rb'
 
 include Rack::Test::Methods
