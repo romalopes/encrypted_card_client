@@ -10,6 +10,12 @@ GIT
   specs:
     rails_log_stdout (0.0.1)
 
+GIT
+  remote: git://github.com/romalopes/lawn_mowing.git
+  revision: 400799f4541e9112151678560499a7853d2926cc
+  specs:
+    lawn_mowing (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -235,6 +241,7 @@ DEPENDENCIES
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
   json
+  lawn_mowing (= 0.1.0)!
   pg
   rack-test
   rails3_serve_static_assets!
