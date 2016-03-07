@@ -80,7 +80,8 @@ end
 
 # list all
 get '/lawn/:id/mowers' do
-  Mower.all.to_json
+  lawn = Lawn.find(params[:id])
+  mower = lawn.mowers.to_json
 end
 
 # view one

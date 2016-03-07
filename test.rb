@@ -9,142 +9,160 @@ def app
   Sinatra::Application
 end
 
-describe "Reseting database to test" do 
-	it "/reset_database" do 
-		get "/reset_database"
-  	Lawn.count.must_equal 1
-  	Mower.count.must_equal 2
+# describe "Reseting database to test" do 
+# 	it "/reset_database" do 
+# 		get "/reset_database"
+#   	Lawn.count.must_equal 1
+#   	Mower.count.must_equal 2
 
-  	last_response.status.must_equal 200
-		info = JSON::parse(last_response.body)
+#   	last_response.status.must_equal 200
+# 		info = JSON::parse(last_response.body)
 		
-		info["status"].must_equal "ok"
-		info["lawns"][0]["width"].must_equal 5
-		info["mowers"][0]["x"].must_equal 1
-		info["mowers"][0]["headings"].must_equal "N"
-		info["mowers"][1]["x"].must_equal 3
-		info["mowers"][1]["headings"].must_equal "E"
+# 		info["status"].must_equal "ok"
+# 		info["lawns"][0]["width"].must_equal 5
+# 		info["mowers"][0]["x"].must_equal 1
+# 		info["mowers"][0]["headings"].must_equal "N"
+# 		info["mowers"][1]["x"].must_equal 3
+# 		info["mowers"][1]["headings"].must_equal "E"
 
-		Mower.first.x.must_equal 1
-	  Mower.first.y.must_equal 2
-	  Mower.first.headings.must_equal "N"
-	  Mower.last.x.must_equal 3
-	  Mower.last.y.must_equal 3
-	  Mower.last.headings.must_equal "E"
-	end
-end
+# 		Mower.first.x.must_equal 1
+# 	  Mower.first.y.must_equal 2
+# 	  Mower.first.headings.must_equal "N"
+# 	  Mower.last.x.must_equal 3
+# 	  Mower.last.y.must_equal 3
+# 	  Mower.last.headings.must_equal "E"
+# 	end
+# end
 
 describe "Lawns" do
   describe "Calls to lawns" do
-		it "/lawnsl GET" do
-			Lawn.delete_all
-		  Lawn.create(:width=>5, :height=>5)
-		  Lawn.create(:width=>6, :height=>6)
-		  get "/lawns"
-		  last_response.status.must_equal 200
-		  info = JSON::parse(last_response.body)
-		  info.size.must_equal 2
-		  info[0]["width"].must_equal 5
-		  info[1]["width"].must_equal 6
-		end  
+# 		it "/lawnsl GET" do
+# 			Lawn.delete_all
+# 		  Lawn.create(:width=>5, :height=>5)
+# 		  Lawn.create(:width=>6, :height=>6)
+# 		  get "/lawns"
+# 		  last_response.status.must_equal 200
+# 		  info = JSON::parse(last_response.body)
+# 		  info.size.must_equal 2
+# 		  info[0]["width"].must_equal 5
+# 		  info[1]["width"].must_equal 6
+# 		end  
 
-		it "POST /lawn create" do
-			Lawn.delete_all
-		  Lawn.count.must_equal 0
-		  post '/lawn', { lawn: {:width=>2, height: 1 } }
-		 	last_response.status.must_equal 201
-		  info = JSON::parse(last_response.body)
-		  Lawn.count== 1
-		  Lawn.first.width.must_equal 2
-		end
+# 		it "POST /lawn create" do
+# 			Lawn.delete_all
+# 		  Lawn.count.must_equal 0
+# 		  post '/lawn', { lawn: {:width=>2, height: 1 } }
+# 		 	last_response.status.must_equal 201
+# 		  info = JSON::parse(last_response.body)
+# 		  Lawn.count== 1
+# 		  Lawn.first.width.must_equal 2
+# 		end
 
-		it "POST /lawn create with error" do
-			Lawn.delete_all
-		  Lawn.count.must_equal 0
-		  post '/lawn', { :width=>2, height: nil }
-		  Lawn.count.must_equal 0
-		  last_response.status.must_equal 304
-		end
+# 		it "POST /lawn create with error" do
+# 			Lawn.delete_all
+# 		  Lawn.count.must_equal 0
+# 		  post '/lawn', { :width=>2, height: nil }
+# 		  Lawn.count.must_equal 0
+# 		  last_response.status.must_equal 304
+# 		end
 
-		it "PUT /lawn/:id update" do
-			Lawn.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
+# 		it "PUT /lawn/:id update" do
+# 			Lawn.delete_all
+# 		  lawn = Lawn.create(:width=>6, :height=>6)
 
-		  params = {lawn:{:width=>2, height: 2 } }
-		  put "/lawn/#{lawn.id}", params
-		  Lawn.count.must_equal 1
-		  Lawn.first.width.must_equal 2
-		  Lawn.first.width.must_equal 2
-		  last_response.status.must_equal 202
-		  info = JSON::parse(last_response.body)
-			info.size.must_equal 1
-		  info["status"].must_equal "ok"
-		end
+# 		  params = {lawn:{:width=>2, height: 2 } }
+# 		  put "/lawn/#{lawn.id}", params
+# 		  Lawn.count.must_equal 1
+# 		  Lawn.first.width.must_equal 2
+# 		  Lawn.first.width.must_equal 2
+# 		  last_response.status.must_equal 202
+# 		  info = JSON::parse(last_response.body)
+# 			info.size.must_equal 1
+# 		  info["status"].must_equal "ok"
+# 		end
 
-		it "PUT /lawn/:id update Error" do
-			Lawn.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
+# 		it "PUT /lawn/:id update Error" do
+# 			Lawn.delete_all
+# 		  lawn = Lawn.create(:width=>6, :height=>6)
 
-		  params = {lawn:{:width=>2, height: nil } }
-		  put "/lawn/#{lawn.id}", params
-		  last_response.status.must_equal 304
-		end
+# 		  params = {lawn:{:width=>2, height: nil } }
+# 		  put "/lawn/#{lawn.id}", params
+# 		  last_response.status.must_equal 304
+# 		end
 
-##############
-		it "DELETE /lawn/:id delete" do
-			Lawn.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
+# ##############
+# 		it "DELETE /lawn/:id delete" do
+# 			Lawn.delete_all
+# 		  lawn = Lawn.create(:width=>6, :height=>6)
 
-		  params = { id: lawn.id }
-		  delete "/lawn/#{lawn.id}", params
-		 	last_response.status.must_equal 202
-		  Lawn.count.must_equal 0
-		  info = JSON::parse(last_response.body)
-			info.size.must_equal 1
-		  info["status"].must_equal "ok"
-		end
+# 		  params = { id: lawn.id }
+# 		  delete "/lawn/#{lawn.id}", params
+# 		 	last_response.status.must_equal 202
+# 		  Lawn.count.must_equal 0
+# 		  info = JSON::parse(last_response.body)
+# 			info.size.must_equal 1
+# 		  info["status"].must_equal "ok"
+# 		end
 
-		it "DELETE /lawn/:id/mower/:mower_id delete" do
-			Lawn.delete_all
-			Mower.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
-		  mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  params = { id: lawn.id, mower_id: mower.id }
-		  delete "/lawn/#{lawn.id}/mower/#{mower.id}", params
-		  last_response.status.must_equal 202
-		  Mower.count.must_equal 0
-		  info = JSON::parse(last_response.body)
-			info.size.must_equal 1
-		  info["status"].must_equal "ok"
-		end
+# 		it "DELETE /lawn/:id/mower/:mower_id delete" do
+# 			Lawn.delete_all
+# 			Mower.delete_all
+# 		  lawn = Lawn.create(:width=>6, :height=>6)
+# 		  mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+# 		  params = { id: lawn.id, mower_id: mower.id }
+# 		  delete "/lawn/#{lawn.id}/mower/#{mower.id}", params
+# 		  last_response.status.must_equal 202
+# 		  Mower.count.must_equal 0
+# 		  info = JSON::parse(last_response.body)
+# 			info.size.must_equal 1
+# 		  info["status"].must_equal "ok"
+# 		end
 
-		it "GET '/execute/:id'" do
-			Lawn.delete_all
-			Mower.delete_all
-		  lawn = Lawn.create(:width=>5, :height=>5)
-		  lawn.mowers.create(x:1, y:2, headings:"N", commands:"LMLMLMLMM")
-		  lawn.mowers.create(x:3, y:3, headings:"E", commands:"MMRMMRMRRM")
+# 		it "GET '/execute/:id'" do
+# 			Lawn.delete_all
+# 			Mower.delete_all
+# 		  lawn = Lawn.create(:width=>5, :height=>5)
+# 		  lawn.mowers.create(x:1, y:2, headings:"N", commands:"LMLMLMLMM")
+# 		  lawn.mowers.create(x:3, y:3, headings:"E", commands:"MMRMMRMRRM")
 
-		  get "/execute/#{lawn.id}", { id: lawn.id }
-			last_response.status.must_equal 200
-		  info = JSON::parse(last_response.body)
-		  Mower.first.x.must_equal 1
-		  Mower.first.y.must_equal 3
-		  Mower.first.headings.must_equal "N"
-		  Mower.last.x.must_equal 5
-		  Mower.last.y.must_equal 1
-		  Mower.last.headings.must_equal "E"
-		end
-	end
+# 		  get "/execute/#{lawn.id}", { id: lawn.id }
+# 			last_response.status.must_equal 200
+# 		  info = JSON::parse(last_response.body)
+# 		  Mower.first.x.must_equal 1
+# 		  Mower.first.y.must_equal 3
+# 		  Mower.first.headings.must_equal "N"
+# 		  Mower.last.x.must_equal 5
+# 		  Mower.last.y.must_equal 1
+# 		  Mower.last.headings.must_equal "E"
+# 		end
+# 	end
 
-  describe "Calls to mowers" do
+#   describe "Calls to mowers" do
+# 		it "/lawn/:id/mowers GET list all" do
+# 			Lawn.delete_all
+# 			Mower.delete_all
+# 		  lawn = Lawn.create(:width=>6, :height=>6)
+# 		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+# 		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+# 		  get "/lawn/#{lawn.id}/mowers"
+# 		  last_response.status.must_equal 200
+# 		  info = JSON::parse(last_response.body)
+# 		  info.size.must_equal 2
+# 		  info[0]["x"].must_equal 1
+# 		  info[1]["y"].must_equal 1
+# 		end  
+
 		it "/lawn/:id/mowers GET list all" do
 			Lawn.delete_all
 			Mower.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
-		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  get "/lawn/#{lawn.id}/mowers"
+		  lawn_1 = Lawn.create(:width=>6, :height=>6)
+		  lawn_2 = Lawn.create(:width=>4, :height=>4)
+		  lawn_1.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		  lawn_1.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		  lawn_2.mowers.create(x:2, y:2, headings:"N", commands:"MMM")
+		  lawn_2.mowers.create(x:2, y:2, headings:"N", commands:"MMM")
+
+		  get "/lawn/#{lawn_1.id}/mowers"
 		  last_response.status.must_equal 200
 		  info = JSON::parse(last_response.body)
 		  info.size.must_equal 2
@@ -153,110 +171,110 @@ describe "Lawns" do
 		end  
 
 
-		it "POST /lawn/:id/mower create" do
-			Lawn.delete_all
-			Mower.delete_all
-			lawn = Lawn.create(:width=>6, :height=>6)
-		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  Mower.count.must_equal 1
-		  post "/lawn/#{lawn.id}/mower", { id: lawn.id, mower: {x:2, y:2, headings:"N", commands:"MMMM" } }
-		  Mower.count.must_equal 2
-		  Mower.last.x.must_equal 2
-		  last_response.status.must_equal 201
-		  info = JSON::parse(last_response.body)
-		  info["x"].must_equal 2
-		  info["y"].must_equal 2
-		end
+		# it "POST /lawn/:id/mower create" do
+		# 	Lawn.delete_all
+		# 	Mower.delete_all
+		# 	lawn = Lawn.create(:width=>6, :height=>6)
+		#   lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		#   Mower.count.must_equal 1
+		#   post "/lawn/#{lawn.id}/mower", { id: lawn.id, mower: {x:2, y:2, headings:"N", commands:"MMMM" } }
+		#   Mower.count.must_equal 2
+		#   Mower.last.x.must_equal 2
+		#   last_response.status.must_equal 201
+		#   info = JSON::parse(last_response.body)
+		#   info["x"].must_equal 2
+		#   info["y"].must_equal 2
+		# end
 
-		it "POST /lawn/:id/mower creat Error" do
-			Lawn.delete_all
-			Mower.delete_all
+		# it "POST /lawn/:id/mower creat Error" do
+		# 	Lawn.delete_all
+		# 	Mower.delete_all
 
-			lawn = Lawn.create(:width=>6, :height=>6)
-		  lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  Mower.count.must_equal 1
-		  post "/lawn/#{lawn.id}/mower", { id: lawn.id, mower: {x:nil, y:1, headings:"N", commands:"MMMM" } }
-		  Mower.count.must_equal 1
-		  last_response.status.must_equal 304
-		end
+		# 	lawn = Lawn.create(:width=>6, :height=>6)
+		#   lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		#   Mower.count.must_equal 1
+		#   post "/lawn/#{lawn.id}/mower", { id: lawn.id, mower: {x:nil, y:1, headings:"N", commands:"MMMM" } }
+		#   Mower.count.must_equal 1
+		#   last_response.status.must_equal 304
+		# end
 
-		it "PUT /lawn/:id/mower/:mower_id update" do
-			Lawn.delete_all
-			Mower.delete_all
+		# it "PUT /lawn/:id/mower/:mower_id update" do
+		# 	Lawn.delete_all
+		# 	Mower.delete_all
 
-			lawn = Lawn.create(:width=>6, :height=>6)
-		  mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  Mower.count.must_equal 1
-		  params = { id: lawn.id, mower_id: mower.id, mower: {x:2, y:1, headings:"S", commands:"MMMM"} }
-		  put "/lawn/#{lawn.id}/mower/#{mower.id}", params
-		  last_response.status.must_equal 202
-		  Mower.count.must_equal 1
-		  Mower.first.x.must_equal 2
+		# 	lawn = Lawn.create(:width=>6, :height=>6)
+		#   mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		#   Mower.count.must_equal 1
+		#   params = { id: lawn.id, mower_id: mower.id, mower: {x:2, y:1, headings:"S", commands:"MMMM"} }
+		#   put "/lawn/#{lawn.id}/mower/#{mower.id}", params
+		#   last_response.status.must_equal 202
+		#   Mower.count.must_equal 1
+		#   Mower.first.x.must_equal 2
 
-		  Mower.first.headings.must_equal "S"
-		end
+		#   Mower.first.headings.must_equal "S"
+		# end
 
-		it "DELETE /lawn/:id/mower/:mower_id delete" do
-			Lawn.delete_all
-			Mower.delete_all
-		  lawn = Lawn.create(:width=>6, :height=>6)
-		  mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
-		  params = { id: lawn.id, mower_id: mower.id }
-		  delete "/lawn/#{lawn.id}/mower/#{mower.id}", params
-		  last_response.status.must_equal 202
-		  Mower.count.must_equal 0
-		  info = JSON::parse(last_response.body)
-			info.size.must_equal 1
-		  info["status"].must_equal "ok"
-		end
- 	end
+		# it "DELETE /lawn/:id/mower/:mower_id delete" do
+		# 	Lawn.delete_all
+		# 	Mower.delete_all
+		#   lawn = Lawn.create(:width=>6, :height=>6)
+		#   mower = lawn.mowers.create(x:1, y:1, headings:"N", commands:"MMM")
+		#   params = { id: lawn.id, mower_id: mower.id }
+		#   delete "/lawn/#{lawn.id}/mower/#{mower.id}", params
+		#   last_response.status.must_equal 202
+		#   Mower.count.must_equal 0
+		#   info = JSON::parse(last_response.body)
+		# 	info.size.must_equal 1
+		#   info["status"].must_equal "ok"
+		# end
+ 	# end
 
- 	describe "lawn model" do
- 		before {
- 		 	Lawn.delete_all
-			Mower.delete_all
-		  @lawn = Lawn.create(:width=>5, :height=>5)
-		  @lawn.mowers.create(x:1, y:2, headings:"N", commands:"LMLMLMLMM")
-		  @lawn.mowers.create(x:3, y:3, headings:"E", commands:"MMRMMRMRRM")
- 		}
+ 	# describe "lawn model" do
+ 	# 	before {
+ 	# 	 	Lawn.delete_all
+		# 	Mower.delete_all
+		#   @lawn = Lawn.create(:width=>5, :height=>5)
+		#   @lawn.mowers.create(x:1, y:2, headings:"N", commands:"LMLMLMLMM")
+		#   @lawn.mowers.create(x:3, y:3, headings:"E", commands:"MMRMMRMRRM")
+ 	# 	}
 
-  	it "array_positions " do
-		  array = @lawn.array_positions
-		  array.must_equal ["5 5", "1 2 N", "LMLMLMLMM", "3 3 E", "MMRMMRMRRM"]
+  # 	it "array_positions " do
+		#   array = @lawn.array_positions
+		#   array.must_equal ["5 5", "1 2 N", "LMLMLMLMM", "3 3 E", "MMRMMRMRRM"]
 
-  	end
+  # 	end
 
-  	it "map prositions" do
-  		map = @lawn.map_positions
-  		map[:width].must_equal 5
-  		map[:height].must_equal 5
+  # 	it "map prositions" do
+  # 		map = @lawn.map_positions
+  # 		map[:width].must_equal 5
+  # 		map[:height].must_equal 5
 
-  		map[:mower][0][:x].must_equal 1
-  		map[:mower][1][:x].must_equal 3
-  	end
+  # 		map[:mower][0][:x].must_equal 1
+  # 		map[:mower][1][:x].must_equal 3
+  # 	end
 
-	  it "set_mowers_values" do
-	  	lawn_mowers_positions = {}
-			@lawn.set_mowers_values([[1, 1], [1, 1, "S", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
-			Mower.first.x.must_equal 1
-			Mower.first.y.must_equal 1
-			Mower.first.headings.must_equal "S"
-			@lawn.set_mowers_values([[5, 5], [1, 3, "N", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
-			Lawn.first.width.must_equal 5
-			Lawn.first.height.must_equal 5
-			Mower.first.x.must_equal 1
-			Mower.first.y.must_equal 3
-			Mower.first.headings.must_equal "N"
-	  end
+	 #  it "set_mowers_values" do
+	 #  	lawn_mowers_positions = {}
+		# 	@lawn.set_mowers_values([[1, 1], [1, 1, "S", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
+		# 	Mower.first.x.must_equal 1
+		# 	Mower.first.y.must_equal 1
+		# 	Mower.first.headings.must_equal "S"
+		# 	@lawn.set_mowers_values([[5, 5], [1, 3, "N", "LMLMLMLMM"], [5, 1, "E", "MMRMMRMRRM"]])	  
+		# 	Lawn.first.width.must_equal 5
+		# 	Lawn.first.height.must_equal 5
+		# 	Mower.first.x.must_equal 1
+		# 	Mower.first.y.must_equal 3
+		# 	Mower.first.headings.must_equal "N"
+	 #  end
     
-  	it "execute" do
-	  	@lawn.execute
-	  	Mower.first.x.must_equal 1
-			Mower.first.y.must_equal 3
-			Mower.first.headings.must_equal "N"
-			Mower.last.x.must_equal 5
-			Mower.last.y.must_equal 1
-			Mower.last.headings.must_equal "E"
-	  end
+  # 	it "execute" do
+	 #  	@lawn.execute
+	 #  	Mower.first.x.must_equal 1
+		# 	Mower.first.y.must_equal 3
+		# 	Mower.first.headings.must_equal "N"
+		# 	Mower.last.x.must_equal 5
+		# 	Mower.last.y.must_equal 1
+		# 	Mower.last.headings.must_equal "E"
+	 #  end
 	end
 end
