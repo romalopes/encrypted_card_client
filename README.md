@@ -1,3 +1,4 @@
+### Lawn Mowing API
 1 - API REST that manage lawns and mower and call manual mowing system returning Json values.<br>
 		GitHub<br>
 		  https://github.com/romalopes/lawn-mowing-api<br>
@@ -27,13 +28,12 @@
 				http://localhost:4567/execute/:id
 
 
+### Lawn Mowing GEM
 2 - GEM reponsible for run the manual and automatic systems.  To run both systems the user has to cal a file which is located in bin directory.
-
 		GitHub<br>
 		  https://github.com/romalopes/lawn_mowing<br>
 		Travis<br>
 		  https://travis-ci.org/romalopes/lawn_mowing<br>
-
 		 
 		To run the GEM
 
