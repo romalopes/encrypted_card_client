@@ -133,7 +133,6 @@ describe "Lawns" do
 		  get "/execute/#{lawn.id}", { id: lawn.id }
 			last_response.status.must_equal 200
 		  info = JSON::parse(last_response.body)
-		  puts "info:#{info}"
 		  Mower.first.x.must_equal 1
 		  Mower.first.y.must_equal 3
 		  Mower.first.headings.must_equal "N"
@@ -238,11 +237,11 @@ describe "Lawns" do
 
   	it "map prositions" do
   		map = @lawn.map_positions
-  		map[:withd].must_equal 5
+  		map[:width].must_equal 5
   		map[:height].must_equal 5
 
-  		map[:mower][0].x.must_equal 1
-  		map[:mower][1].x.must_equal 1
+  		map[:mower][0][:x].must_equal 1
+  		map[:mower][1][:x].must_equal 3
   	end
 
 	  it "set_mowers_values" do
