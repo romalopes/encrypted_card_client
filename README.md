@@ -22,7 +22,7 @@
 		  	$ bundle exec ruby api_lawn.rb
 
 
-		  	Just to test<br>
+		  	Just to test
 				http://localhost:4567/renew_data_base  (set the database with the values from example)
 
 				http://localhost:4567/execute/:id
@@ -37,9 +37,12 @@
 		  https://travis-ci.org/romalopes/lawn_mowing<br>
 		</P>
 
+		Testing:
+			$ rspec spec
 		To run the GEM
-
-		Manual:
+		Manual Mowing system:
+			Run:
+				$ ruby -Ilib ./bin/lawn_mowing.rb "manual_mowing.txt"
 		  File format:
 		    Fist line has informatino of width and height.
 		    Following lines have position of each mower, heading and sequence of moves.
@@ -49,12 +52,13 @@
 		    LMLMLMLMM
 		    3 3 E
 		    MRMRMRMRMM
-		    $ ruby -Ilib ./bin/lawn_mowing.rb "manual_mowing.txt"
-		Automatic
+		Automatic Mowing system:
+			Run:
+				$ ruby -Ilib ./bin/lawn_mowing.rb "automatic_mowing.txt"
 		  File format:
 		    1 Line with 3 information, width and height of lawn and number of mowers.
 		  Ex: 5 5 3
 
-		  $ ruby -Ilib ./bin/lawn_mowing.rb "automatic_mowing.txt"
+		  
 
 
