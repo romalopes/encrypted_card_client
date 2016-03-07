@@ -13,7 +13,7 @@ gem 'sinatra-redirect-with-flash'
 # gem 'lawn_mowing', '0.1.0',  :path=>'lawn_mowing'
 gem 'lawn_mowing', '0.1.0', :git => 'git://github.com/romalopes/lawn_mowing.git'
 
-gem 'sinatra-sequel'
+# gem 'sinatra-sequel'
 # gem 'sqlite3'
 
 group :development, :test do

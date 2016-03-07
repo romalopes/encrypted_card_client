@@ -10,11 +10,9 @@
 
 
 		To run locally:
-		  $ git clone   https://github.com/romalopes/awn-mowing-api.git
-			$ cd lawn_api
+		  $ git clone   https://github.com/romalopes/lawn-mowing-api.git
+			$ cd lawn-mowing-api
 			$ bundle install
-			$ rake db:migrate
-
 
 		 # To test
 		  	$ bundle exec ruby test.rb
