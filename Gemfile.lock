@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/romalopes/lawn_mowing.git
-  revision: 400799f4541e9112151678560499a7853d2926cc
+  revision: e1e98bc2b9d2139314e0572780bce83fd11b8fde
   specs:
     lawn_mowing (0.1.0)
 
