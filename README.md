@@ -28,13 +28,15 @@
 				http://localhost:4567/execute/:id
 
 
+
 ### Lawn Mowing GEM
 2 - GEM reponsible for run the manual and automatic systems.  To run both systems the user has to cal a file which is located in bin directory.
-		GitHub<br>
+		<p>GitHub<br>
 		  https://github.com/romalopes/lawn_mowing<br>
 		Travis<br>
 		  https://travis-ci.org/romalopes/lawn_mowing<br>
-		 
+		</P>
+
 		To run the GEM
 
 		Manual:
