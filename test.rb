@@ -249,7 +249,6 @@ describe "Lawns" do
 			Mower.first.headings.must_equal "N"
 	  end
     
-  
   	it "execute" do
 	  	@lawn.execute
 	  	Mower.first.x.must_equal 1
