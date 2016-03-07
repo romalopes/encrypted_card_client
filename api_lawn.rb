@@ -1,3 +1,4 @@
+require 'sinatra'
 require 'rubygems'
 require 'json'
 require 'sinatra/activerecord'
