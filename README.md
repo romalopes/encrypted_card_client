@@ -6,8 +6,10 @@ API REST that manage lawns and mower and call manual mowing system returning Jso
 		  https://travis-ci.org/romalopes/lawn-mowing-api<br>
 		Heroku<br>
 		  http://lawn-mowing-api.herokuapp.com/ <br>
-		  http://lawn-mowing-api.herokuapp.com/renew_data_base
-			http://lawn-mowing-api.herokuapp.com/execute/:id
+		  To reset the database
+		     http://lawn-mowing-api.herokuapp.com/reset_database
+		  To execute the manual mower system
+		      http://lawn-mowing-api.herokuapp.com/execute/:id
 
 
 		To run locally:
