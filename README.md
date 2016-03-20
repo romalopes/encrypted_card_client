@@ -14,7 +14,6 @@ API client the calls encrypted_card_api.<br>
 		 # To run the api web server
 		  	$ bundle exec ruby encrypted_card_client.rb
 
-
   	First action to do
 		http://localhost:4567/create_user_master?password=PASSWORD 
       Create a users called user_master.
