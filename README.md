@@ -16,23 +16,23 @@ API client the calls encrypted_card_api.<br>
 
 
   	First action to do
-		http://localhost:3030/create_user_master?password=PASSWORD (post)
+		http://localhost:4567/create_user_master?password=PASSWORD 
       Create a users called user_master.
       Some actions should be done only by this user
 
     Other actions:
-      http://localhost:3030/authenticate_user?login=user_master&password=romalopes (post)
+      http://localhost:4567/authenticate_user?login=user_master&password=romalopes
         Authenticate user and return a 50 character TOKEN.
 
-      http://localhost:3030/users?token=TOKEN (post)
+      http://localhost:4567/users?token=TOKEN
         Return all users.   Only user_master
 
-      http://localhost:3030/create_user?token=TOKEN&login=romalopes&password=romalopes (post)
+      http://localhost:4567/create_user?token=TOKEN&login=romalopes&password=romalopes
         Create a new user.  Only user_master
 
 
-      http://localhost:3030/create_card?token=<TOKEN>&key=<KEY>&credit_card_number=<CREDI_CARD_NUMBER>&password=<PASSWORD> (post)
+      http://localhost:4567/create_card?token=<TOKEN>&key=<KEY>&credit_card_number=<CREDI_CARD_NUMBER>&password=<PASSWORD>
         Create a new card, encrypting the credit_card_number.  Password is a value passed by client to encrypt credit card number.
 
-      http://localhost:3030/retrieve_credit_card_number?token=<TOKEN>&key=<KEY>&password=<PASSWORD> (post)
+      http://localhost:4567/retrieve_credit_card_number?token=<TOKEN>&key=<KEY>&password=<PASSWORD>
         Retrieve the credit card number.  Password is an information passed by client to encrypt credit card number.
