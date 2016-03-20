@@ -10,36 +10,30 @@ GIT
   specs:
     rails_log_stdout (0.0.1)
 
-GIT
-  remote: git://github.com/romalopes/lawn_mowing.git
-  revision: e1e98bc2b9d2139314e0572780bce83fd11b8fde
-  specs:
-    lawn_mowing (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    actionpack (4.2.5.2)
-      actionview (= 4.2.5.2)
-      activesupport (= 4.2.5.2)
+    actionpack (4.2.6)
+      actionview (= 4.2.6)
+      activesupport (= 4.2.6)
       rack (~> 1.6)
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (4.2.5.2)
-      activesupport (= 4.2.5.2)
+    actionview (4.2.6)
+      activesupport (= 4.2.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    activemodel (4.2.5.2)
-      activesupport (= 4.2.5.2)
+    activemodel (4.2.6)
+      activesupport (= 4.2.6)
       builder (~> 3.1)
-    activerecord (4.2.5.2)
-      activemodel (= 4.2.5.2)
-      activesupport (= 4.2.5.2)
+    activerecord (4.2.6)
+      activemodel (= 4.2.6)
+      activesupport (= 4.2.6)
       arel (~> 6.0)
-    activesupport (4.2.5.2)
+    activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -82,12 +76,12 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
-    railties (4.2.5.2)
-      actionpack (= 4.2.5.2)
-      activesupport (= 4.2.5.2)
+    railties (4.2.6)
+      actionpack (= 4.2.6)
+      activesupport (= 4.2.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.5.0)
+    rake (11.1.1)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -137,7 +131,6 @@ DEPENDENCIES
   activerecord
   factory_girl_rails (= 4.2.1)
   json
-  lawn_mowing (= 0.1.0)!
   pg
   rack-test
   rails3_serve_static_assets!
