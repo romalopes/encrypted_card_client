@@ -1,1 +1,1 @@
-web: bundle exec ruby api_lawn.rb -p $PORT
+web: bundle exec ruby encrypted_card_client.rb -p $PORT

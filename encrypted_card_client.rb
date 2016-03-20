@@ -3,10 +3,6 @@ require 'rubygems'
 require 'json'
 require 'sinatra/activerecord'
 require './environments'
-require './lawn'
-require './mower'
-
-
 require 'net/http'
 require 'net/https'
 require "uri"

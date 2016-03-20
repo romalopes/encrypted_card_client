@@ -9,10 +9,6 @@ gem "sinatra-activerecord"
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 
-
-# gem 'lawn_mowing', '0.1.0',  :path=>'lawn_mowing'
-gem 'lawn_mowing', '0.1.0', :git => 'git://github.com/romalopes/lawn_mowing.git'
-
 group :development, :test do
   gem 'sqlite3'
   gem "rack-test"
