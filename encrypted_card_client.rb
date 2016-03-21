@@ -26,6 +26,14 @@ get "/create_user_master" do
     return { result: response.body}.to_json
 end
 
+get "/logs" do 
+  uri = URI.parse("http://localhost:3030")
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Post.new("/logs?token=#{params[:token]}&login=#{params[:login]}&number_logs=#{params[:number_logs]}")
+  response = http.request(request)
+  return { result: response.body}.to_json
+end
+
 # http://localhost:4567/create_user?token=UVYivzgDlpSQp0o9bMBmHcOkvxcvKJd8B0Z3ih0NkUlIeTgfrH&login=romalopes&password=romalopes
 get "/create_user" do 
   uri = URI.parse("http://localhost:3030")
